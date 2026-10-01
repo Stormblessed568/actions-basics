@@ -2,14 +2,23 @@ name: hello world
 
 on:
   push:
-      branches:
-          - main
+    branches:
+      - main
+
+  workflow_dispatch:
 
 jobs:
-   hello:
-      runs-on: ubuntu-latest
+  hello:
+    runs-on: ubuntu-latest
 
-      steps:
+    steps:
       - uses: actions/checkout@v2
+
+      - name: Show Python version
+        run: python --version
+
       - name: run echo
         run: echo "Hello, world!"
+
+      - name: List repository files
+        run: ls -la
